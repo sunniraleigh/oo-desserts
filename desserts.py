@@ -3,10 +3,13 @@
 
 class Cupcake:
     """A cupcake."""
+    def __init__(self, name, qty):
+        self.name = name
+        self.qty = qty
 
-    def __repr__(self):
+    def __repr__(self, name, qty):
         """Human-readable printout for debugging."""
-
+        super().__init__(name, qty)
         return f'<Cupcake name="{self.name}" qty={self.qty}>'
 
 
