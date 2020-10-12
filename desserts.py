@@ -3,13 +3,29 @@
 
 class Cupcake:
     """A cupcake."""
-    def __init__(self, name, qty):
-        self.name = name
-        self.qty = qty
+    
 
-    def __repr__(self, name, qty):
+    def __init__(self, name, flavor, price):
+        self.cache = {}
+        self.name = name
+        self.flavor = flavor
+        self.price = price
+        self.qty = 0
+
+        self.cache[self.name] = self
+    
+    def add_stock(self, amount):
+        self.qty += amount
+    
+    def sell(self, amount):
+        if self.qty == 0 or amount > self.qty:
+            print("Sorry, these cupcakes are sold out.")
+        else:
+            self.qty -= amount
+
+
+    def __repr__(self):
         """Human-readable printout for debugging."""
-        super().__init__(name, qty)
         return f'<Cupcake name="{self.name}" qty={self.qty}>'
 
 
